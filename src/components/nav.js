@@ -6,7 +6,7 @@ const Nav = props => {
         padding: '0 10px'
     };
     return (
-        <nav style={navStyles} className="red darken-3">
+        <nav style={navStyles} className="blue darken-3">
             <Link className="brand-logo" to="/">Movie Quotes</Link>
             <ul className="right">
                 <li>
