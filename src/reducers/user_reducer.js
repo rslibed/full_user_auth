@@ -1,12 +1,18 @@
 import types from '../actions/types';
 
 const DEFAULT_STATE = {
-    auth: false
+    auth: false,
+    error: ''
 }
 
 export default (state = DEFAULT_STATE, action) => {
     switch(action.type) {
-    default:
-        return state
+        case types.SIGN_IN:
+        case types.SIGN_UP:
+            return { auth: true , error: ''}
+        case types.ERROR:
+            return { auth: false, error: action.payload }
+        default:
+            return state
     }
 }
