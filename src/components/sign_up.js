@@ -24,6 +24,7 @@ class SignUp extends Component {
                                 <Field name="email" type="text" placeholder="Enter email address" component={renderInput}/>
                                 <Field name="password" type="password" placeholder="Create a password" component={renderInput}/>
                                 <Field name="confirmPassword" type="password" placeholder="Confirm password" component={renderInput}/>
+                                <div className="center-align red">{this.props.formError}</div>
                                 <div className="right-align">
                                     <button className="btn blue darken-4">Sign Up</button>
                                 </div>
@@ -51,9 +52,15 @@ function validate(values) {
     return error;
 }
 
+function mapStateToProps (state) {
+    return {
+        formError: state.user.error
+    }
+}
+
 SignUp = reduxForm({
     form: 'sign-up',
     validate
 })(SignUp)
 
-export default connect(null, { signUp })(SignUp);
+export default connect(mapStateToProps, { signUp })(SignUp);
