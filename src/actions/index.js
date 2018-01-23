@@ -11,7 +11,13 @@ export function signUp(cred) {
             dispatch( {
                 type: types.SIGN_UP
             } )
-        });
+        }).catch( err => {
+            console.log('Error:', err);
+            dispatch({
+                type: types.ERROR,
+                payload: err.response.data.error
+            });
+        } );
     }
 }
 
