@@ -21,6 +21,13 @@ export function signUp(cred) {
     }
 }
 
+export function logout () {
+    localStorage.removeItem('token');
+    return {
+        type: types.LOG_OUT
+    }
+}
+
 export function signIn(cred) {
     return dispatch => {
         axios.post(`${BASE_URL}/signin`, cred).then( (resp) => {
@@ -46,7 +53,10 @@ export function getQuotes () {
             }
         }
         axios.get(BASE_URL, config).then( resp => {
-            console.log("Quote request resp: ", resp);
+            dispatch({ 
+                type: types.GET_QUOTES,
+                payload: resp.data.message
+             })
         })
     }
 }

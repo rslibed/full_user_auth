@@ -11,6 +11,8 @@ export default (state = DEFAULT_STATE, action) => {
         case types.SIGN_IN:
         case types.SIGN_UP:
             return { auth: true , error: ''}
+        case types.LOG_OUT:
+            return { auth: false, error: '' }
         case types.ERROR:
             console.log('REDUCER ERROR:', action);
             return { auth: false, error: action.payload }
