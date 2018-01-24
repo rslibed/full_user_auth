@@ -38,3 +38,16 @@ export function signIn(cred) {
     }
 }
 
+export function getQuotes () {
+    return dispatch => {
+        const config = {
+            headers: {
+                authorization: localStorage.getItem('token')
+            }
+        }
+        axios.get(BASE_URL, config).then( resp => {
+            console.log("Quote request resp: ", resp);
+        })
+    }
+}
+
